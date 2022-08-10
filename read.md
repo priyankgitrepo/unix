@@ -81,6 +81,65 @@ Example:
 $ sed '/abc/d' filename.txt
 ```
 
+-----------------------AWK commands------------------------------------------------------------
 
+11.Default behavior of Awk: By default Awk prints every line of data from the specified file.  
+```bash
+awk '{print}' employee.txt
+```
 
+12.Print the lines which match the given pattern.
+```bash
+awk '/manager/ {print}' employee.txt 
+```
+
+13.Splitting a Line Into Fields
+```bash
+awk '{print $1,$2}' employee.txt
+```
+
+14.Use of NR built-in variables (Display Line Number)  
+```bash
+awk ' {print NR, $1,$2,$3}' employee.txt
+```
+
+15.Use of NF built-in variables (Display Last Field)  
+```bash
+awk '{print $1,$NF}' employee.txt 
+```
+
+16.Another use of NR built-in variables (Display Line From 3 to 6)  
+```bash
+ awk 'NR==3,NR==6 {print $1,$2,$3}' employee.txt
+```
+17.To print the first item along with the row number(NR) separated with ” – “ from each line in geeksforgeeks.txt:  
+```bash
+awk '{print NR "- "$1,$2,$3}' employee.txt
+```
+18.To count the lines in a file:  
+```bash
+awk 'END {print NR}' employee.txt
+```
+
+19.To find the length of the longest line present in the file
+```bash
+awk '{ if (length($0) > max) max = length($0) } END { print max }' employee.txt
+```
+
+19.Printing lines with more than 10 characters:  
+```bash
+awk 'length($0) > 10' employee.txt
+```
+
+20. To print the squares of first numbers from 1 to n say 6: 
+```bash
+ awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }'
+```
+
+10.5.To Delete pattern matching line
+```bash
+sed '/pattern/d' filename.txt
+Example:
+sed '/abc/d' filename.txt
+```
 
